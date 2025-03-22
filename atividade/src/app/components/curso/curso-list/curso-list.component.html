@@ -1,1 +1,47 @@
-<p>curso-list works!</p>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h2>Listagem de Cursos</h2>
+                    <div class="alinharDireita">
+                        <button  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/aluno/new">Novo</button>
+                    </div>
+                    <br>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th >ID</th>
+                            <th >Nome</th>
+                            <th >Acoes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @for (curso of lista; track $index) {
+                            <tr>
+                                <th>{{curso.id}}</th>
+                                <td>{{curso.nome}}</td>
+                                <th class="alinharDireita">
+                                    <button routerLinkActive="router-link-active" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/aluno/update/{{curso.id}}">
+                                        Editar
+                                    </button>
+                                    <button (click)="delete(curso)" type="button" class="btn btn-outline-danger btn-rounded" mdbRipple rippleColor="dark">
+                                        Deletar
+                                    </button>
+                                </th>
+                                
+                            </tr>
+                            }
+                        </tbody>
+                      </table>
+
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+</div>

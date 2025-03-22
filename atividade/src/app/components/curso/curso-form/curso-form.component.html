@@ -1,1 +1,35 @@
-<p>curso-form works!</p>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+
+    <div class="col-lg-4 alinhar topo">
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Cadastrar Curso</h2>
+                        
+                <mdb-form-control>
+                    <input [(ngModel)]="curso.id" mdbInput type="text" id="typeText" class="form-control"/>
+                    <label mdbLabel class="form-label" for="typeText">ID</label>
+                </mdb-form-control>
+                <br>
+                <mdb-form-control>
+                    <input [(ngModel)]="curso.nome" mdbInput type="password" id="typeText" class="form-control" />
+                    <label mdbLabel class="form-label" for="typeText">Nome</label>
+                </mdb-form-control>
+                <br>
+                
+                
+                <button (click)="save()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
+                    Salvar
+                </button>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-4"></div>
+    </div>
+</div>    
