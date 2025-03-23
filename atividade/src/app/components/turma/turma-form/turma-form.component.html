@@ -1,1 +1,47 @@
-<p>turma-form works!</p>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+
+    <div class="col-lg-4 alinhar topo">
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Cadastrar Turma</h2>
+                        
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="turma.id" />
+                    <label mdbLabel class="form-label" for="typeText">ID</label>
+                </mdb-form-control>
+                <br>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="turma.nome" />
+                    <label mdbLabel class="form-label" for="typeText">Nome</label>
+                </mdb-form-control>
+                <br>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="turma.semestre" />
+                    <label mdbLabel class="form-label" for="typeText">Semestre</label>
+                </mdb-form-control>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="turma.ano" />
+                    <label mdbLabel class="form-label" for="typeText">Ano</label>
+                </mdb-form-control>
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="turma.turno" />
+                    <label mdbLabel class="form-label" for="typeText">Especialidade</label>
+                </mdb-form-control>
+               
+                <br>
+                <button (click)="save()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
+                    Salvar
+                </button>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-4"></div>
+    </div>
+</div>    

@@ -11,9 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './professor-form.component.scss'
 })
 export class ProfessorFormComponent {
-  professor: Professor = new Professor(1,"","","","");
-
-  
+  professor: Professor = new Professor(1,"","","","", []);
 
   save(){
     alert('cadastrado com succeso')
