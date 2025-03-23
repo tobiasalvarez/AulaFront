@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class ProfessorFormComponent {
   professor: Professor = new Professor(1,"","","","", []);
+  professor1: Professor = new Professor(2,"","","","",[]);
+
+  
 
   save(){
     alert('cadastrado com succeso')
