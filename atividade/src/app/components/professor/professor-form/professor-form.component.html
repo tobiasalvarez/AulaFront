@@ -1,1 +1,38 @@
-<p>professor-form works!</p>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4"></div>
+
+    <div class="col-lg-4 alinhar topo">
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Cadastrar Professor</h2>
+                        
+                <mdb-form-control>
+                    <input mdbInput type="text" id="typeText" class="form-control" [(ngModel)]="professor.id" />
+                    <label mdbLabel class="form-label" for="typeText">ID</label>
+                </mdb-form-control>
+                <br>
+                <mdb-form-control>
+                    <input [(ngModel)]="professor.nome" mdbInput type="password" id="typeText" class="form-control" />
+                    <label mdbLabel class="form-label" for="typeText">Nome</label>
+                </mdb-form-control>
+                <br>
+                <mdb-form-control>
+                    <input [(ngModel)]="professor.cpf" mdbInput type="password" id="typeText" class="form-control" />
+                    <label mdbLabel class="form-label" for="typeText">CPF</label>
+                </mdb-form-control>
+                <br>
+                <button (click)="save()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
+                    Salvar
+                </button>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-lg-4"></div>
+    </div>
+</div>    
