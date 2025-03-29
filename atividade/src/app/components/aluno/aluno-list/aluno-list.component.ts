@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Aluno } from '../../../models/aluno';
 import { RouterLink } from '@angular/router';
+import { AlunoService } from '../../../services/aluno.service';
 
 @Component({
   selector: 'app-aluno-list',
@@ -11,6 +12,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AlunoListComponent {
   lista: Aluno[]= [];
+  alunoService = inject(AlunoService);
 
   constructor(){
     this.findAll();
@@ -18,9 +20,6 @@ export class AlunoListComponent {
 
   findAll(){
     
-    this.lista.push(new Aluno(1,"abc","000.000.000-00","45999999",1));
-    this.lista.push(new Aluno(2,"abcd","222.000.000-00","45999999",2));
-    this.lista.push(new Aluno(3,"abcde","111.000.000-00","45999999",3));
   }
 
   delete(aluno: Aluno){
