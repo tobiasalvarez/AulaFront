@@ -17,7 +17,19 @@ export class AlunoService {
     return this.http.get<Aluno[]>(this.API+"/findAll");
   }
 
-  deleteById(): Observable<Aluno[]>{
-    return this.
+  findById(id: number): Observable<Aluno>{
+    return this.http.get<Aluno>(this.API+'/findById/'+id);
+  }
+
+  deleteById(id: number): Observable<string>{
+    return this.http.delete<string>(this.API+'/deleteById/'+id, {responseType: 'text' as 'json'});
+  }
+
+  save(aluno: Aluno): Observable<string> {
+    return this.http.post<string>(this.API+'/save', aluno, {responseType: 'text' as 'json'});
+  }
+
+  update(aluno: Aluno, id: number): Observable<string> {
+    return this.http.put<string>(this.API+'/update/'+id, aluno, {responseType: 'text' as 'json'});
   }
 }
