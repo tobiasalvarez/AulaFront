@@ -1,35 +1,34 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Professor } from '../models/professor';
+import { Turma } from '../models/turma';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProfessorService {
+export class TurmaService {
 
-  http = inject(HttpClient);
+  private API = "http://localhost:8080/api/turma";
 
-  API = "http://localhost:8080/api/professor";
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  findAll(): Observable<Professor[]>{
-    return this.http.get<Professor[]>(this.API+"/findAll");
+  findAll(): Observable<Turma[]> {
+    return this.http.get<Turma[]>(`${this.API}/findAll`);
   }
 
-  findById(id: number): Observable<Professor>{
-    return this.http.get<Professor>(this.API+'/findById/'+id);
+  findById(id: number): Observable<Turma> {
+    return this.http.get<Turma>(`${this.API}/findById/${id}`);
   }
 
-  deleteById(id: number): Observable<string>{
-    return this.http.delete<string>(this.API+'/deleteById/'+id, {responseType: 'text' as 'json'});
+  deleteById(id: number): Observable<string> {
+    return this.http.delete<string>(`${this.API}/deleteById/${id}`, { responseType: 'text' as 'json' });
   }
 
-  save(professor: Professor): Observable<string> {
-    return this.http.post<string>(this.API+'/save', {responseType: 'text' as 'json'});
+  save(turma: Turma): Observable<string> {
+    return this.http.post<string>(`${this.API}/save`, turma, { responseType: 'text' as 'json' });
   }
 
-  update(professor: Professor, id: number): Observable<string> {
-    return this.http.put<string>(this.API+'/update/'+id, professor, {responseType: 'text' as 'json'});
+  update(turma: Turma, id: number): Observable<string> {
+    return this.http.put<string>(`${this.API}/update/${id}`, turma, { responseType: 'text' as 'json' });
   }
 }

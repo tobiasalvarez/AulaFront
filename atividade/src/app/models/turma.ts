@@ -1,10 +1,12 @@
 export class Turma {
-    id!: number;
-    nome!: string;
-    semestre!:string;
-    ano!: number;
-    turno!:string;
-    professores!: string[];
-    alunos!: string[];
-    curso!: string;
+    constructor(
+        public id: number = 0,
+        public nome: string = '',
+        public semestre: string = '',
+        public ano: number = 0,
+        public turno: string = '',
+        public professores: string[] = [],
+        public alunos: string[] = [],
+        public curso: string = ''
+    ) {}
 }

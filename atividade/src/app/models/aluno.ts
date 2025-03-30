@@ -1,23 +1,10 @@
 export class Aluno {
-    id!: number;
-    nome!: string;
-    cpf!: string;
-    telefone!: string;
-    cadastroCompleto!: boolean;
-    turma!: number;
-
-    constructor(id: number,
-        nome: string,
-        cpf: string,
-        telefone: string,
-        turma: number){
-
-            this.id = id;
-            this.nome = nome;
-            this.cpf = cpf;
-            this.telefone = telefone;
-            this.turma = turma;
-    }
+    constructor(
+        public id: number = 0,
+        public nome: string = '',
+        public cpf: string = '',
+        public telefone: string = '',
+        public cadastroCompleto: boolean = false,
+        public turma: number = 0
+    ) {}
 }
-
-
