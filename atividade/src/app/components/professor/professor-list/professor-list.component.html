@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h2>Listagem de Professores</h2>
                     <div class="alinharDireita">
-                        <button  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/professor/new">Novo</button>
+                        <button  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" (click)="new()" >Novo</button>
                     </div>
                     <br>
                     <table class="table">
@@ -15,8 +15,9 @@
                             <th >ID</th>
                             <th >Nome</th>
                             <th >CPF</th>
-                            <th >Telefone</th>
-                            <th >Turma</th>
+                            <th >Email</th>
+                            <th >Especialidade</th>
+                            <th >Turmas</th>
                             <th >Acoes</th>
                           </tr>
                         </thead>
@@ -26,6 +27,9 @@
                                 <th>{{professor.id}}</th>
                                 <td>{{professor.nome}}</td>
                                 <td>{{professor.cpf}}</td>
+                                <td>{{professor.email}}</td>
+                                <td>{{professor.especialidade}}</td>
+                                <td>{{professor.turmas}}</td>
                                 <th class="alinharDireita">
                                     <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/professor/update/{{professor.id}}">
                                         Editar
@@ -49,3 +53,18 @@
     </div>
 
 </div>
+
+
+
+<ng-template #modalProfessorNew>
+
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo carro</h5>  
+    </div>
+    <div class="modal-body">
+
+        <app-professor-form></app-professor-form>
+
+    </div>
+
+</ng-template>

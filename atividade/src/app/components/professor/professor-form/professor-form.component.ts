@@ -17,6 +17,8 @@ import Swal from 'sweetalert2';
 })
 export class ProfessorFormComponent {
 
+  
+
   @Input("professor") professor: Professor = new Professor();
   @Output("meuEvento") meuEvento = new EventEmitter();
 

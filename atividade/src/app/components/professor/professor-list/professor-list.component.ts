@@ -1,16 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { Professor } from '../../../models/professor';
 import { RouterLink } from '@angular/router';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ProfessorFormComponent } from '../professor-form/professor-form.component';
 
 @Component({
   selector: 'app-professor-list',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, ProfessorFormComponent],
   templateUrl: './professor-list.component.html',
   styleUrl: './professor-list.component.scss'
 })
 export class ProfessorListComponent {
   lista: Professor[]= [];
+
+  modalService = inject(MdbModalService);
+  @ViewChild('modalProfessorNew') modalProfessorNew! : TemplateRef<any>;
+  modalRef = MdbModalRef<any>;
 
   constructor(){
     this.findAll();
@@ -27,4 +33,10 @@ export class ProfessorListComponent {
     let i = this.lista.findIndex(x => {return x.id == professor.id});
     this.lista.splice(i, 1);
   }
+
+  new(){
+    this.modalService.open(this.modalProfessorNew)
+  }
+
+  
 }

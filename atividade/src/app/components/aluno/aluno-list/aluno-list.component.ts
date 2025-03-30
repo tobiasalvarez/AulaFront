@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { Aluno } from '../../../models/aluno';
 import { RouterLink } from '@angular/router';
 import { AlunoService } from '../../../services/aluno.service';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-aluno-list',

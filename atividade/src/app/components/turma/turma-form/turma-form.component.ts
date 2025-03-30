@@ -7,14 +7,16 @@ import { TurmaService } from '../../../services/turma.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-turma-form',
   standalone: true,
   imports: [MdbFormsModule, FormsModule],
   templateUrl: './turma-form.component.html',
-  styleUrls: ['./turma-form.component.scss']
+  styleUrl: './turma-form.component.scss'
 })
 export class TurmaFormComponent {
+
   @Input("turma") turma: Turma = new Turma();
   @Output("meuEvento") meuEvento = new EventEmitter();
 
@@ -33,31 +35,37 @@ export class TurmaFormComponent {
     });
   }
 
-  save() {
-    if (this.turma.id > 0) {
-      // UPDATE
-      this.turmaService.update(this.turma, this.turma.id).subscribe({
-        next: (mensagem) => {
-          Swal.fire(mensagem, '', 'success');
-          this.roteador.navigate(['admin/turma']);
-          this.meuEvento.emit("OK");
-        },
-        error: (erro) => {
-          Swal.fire(erro.error, '', 'error');
-        }
-      });
-    } else {
-      // SAVE
-      this.turmaService.save(this.turma).subscribe({
-        next: (mensagem) => {
-          Swal.fire(mensagem, '', 'success');
-          this.roteador.navigate(['admin/turma']);
-          this.meuEvento.emit("OK");
-        },
-        error: (erro) => {
-          Swal.fire(erro.error, '', 'error');
-        }
-      });
+    save(){
+      if(this.turma.id > 0){
+        // UPDATE
+        this.turmaService.update(this.turma, this.turma.id).subscribe({
+          next: (mensagem) => {
+            Swal.fire(mensagem, '', 'success');
+            this.roteador.navigate(['admin/turma']);
+            this.meuEvento.emit("OK");
+          },
+          error: (erro) => {
+            Swal.fire(erro.error, '', 'error');
+          }
+        });
+      }else{
+        // SAVE
+        this.turmaService.save(this.turma).subscribe({
+          next: (mensagem) => {
+            Swal.fire(mensagem, '', 'success');
+            this.roteador.navigate(['admin/turma']);
+            this.meuEvento.emit("OK");
+
+
+               
+          },
+          error: (erro) => {
+            Swal.fire(erro.error, '', 'error');
+          }
+        });
+  
+      }
     }
-  }
+
 }
+
