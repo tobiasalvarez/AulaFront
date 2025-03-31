@@ -31,7 +31,7 @@
                                 <td>{{professor.especialidade}}</td>
                                 <td>{{professor.turmas}}</td>
                                 <th class="alinharDireita">
-                                    <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/professor/update/{{professor.id}}">
+                                    <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" (click)="update(professor)">
                                         Editar
                                     </button>
                                     <button (click)="delete(professor)" type="button" class="btn btn-outline-danger btn-rounded" mdbRipple rippleColor="dark">
@@ -59,11 +59,11 @@
 <ng-template #modalProfessorNew>
 
     <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Novo carro</h5>  
+        <h5 class="modal-title" id="exampleModalLabel">Novo carro</h5>
     </div>
     <div class="modal-body">
 
-        <app-professor-form></app-professor-form>
+        <app-professor-form [professor]="professorEdit" (retorno)="retorno($event)"></app-professor-form>
 
     </div>
 

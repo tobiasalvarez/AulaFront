@@ -9,14 +9,16 @@ import { ProfessorFormComponent } from '../professor-form/professor-form.compone
   standalone: true,
   imports: [RouterLink, ProfessorFormComponent],
   templateUrl: './professor-list.component.html',
-  styleUrl: './professor-list.component.scss'
+  styleUrl: './professor-list.component.scss',
+  providers: [MdbModalService]
 })
 export class ProfessorListComponent {
   lista: Professor[]= [];
+  professorEdit:Professor = new Professor();
 
   modalService = inject(MdbModalService);
   @ViewChild('modalProfessorNew') modalProfessorNew! : TemplateRef<any>;
-  modalRef = MdbModalRef<any>;
+  modalRef!: MdbModalRef<any>;
 
   constructor(){
     this.findAll();
@@ -35,7 +37,23 @@ export class ProfessorListComponent {
   }
 
   new(){
-    this.modalService.open(this.modalProfessorNew)
+    this.professorEdit = new Professor();
+    this.modalRef = this.modalService.open(this.modalProfessorNew)
+  }
+
+  update(professor:Professor){
+    this.professorEdit = Object.assign({}, professor);
+    this.modalRef = this.modalService.open(this.modalProfessorNew);
+  }
+
+  retorno(professor:Professor){
+    if(professor.id > 0){
+      let indice = this.lista.findIndex(x => {return x.id == professor.id});
+      this.lista[indice] = professor;
+    }else{
+      this.lista.push(professor);
+    }
+    this.modalRef.close();
   }
 
   

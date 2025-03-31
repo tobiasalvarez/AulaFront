@@ -20,7 +20,7 @@ export class ProfessorFormComponent {
   
 
   @Input("professor") professor: Professor = new Professor();
-  @Output("meuEvento") meuEvento = new EventEmitter();
+  @Output("retorno") retorno = new EventEmitter();
 
   private professorService = inject(ProfessorService);
   private roteador = inject(Router);
@@ -44,7 +44,7 @@ export class ProfessorFormComponent {
           next: (mensagem) => {
             Swal.fire(mensagem, '', 'success');
             this.roteador.navigate(['admin/professor']);
-            this.meuEvento.emit("OK");
+            this.retorno.emit("OK");
           },
           error: (erro) => {
             Swal.fire(erro.error, '', 'error');
@@ -56,7 +56,7 @@ export class ProfessorFormComponent {
           next: (mensagem) => {
             Swal.fire(mensagem, '', 'success');
             this.roteador.navigate(['admin/professor']);
-            this.meuEvento.emit("OK");
+            this.retorno.emit("OK");
           },
           error: (erro) => {
             Swal.fire(erro.error, '', 'error');
@@ -64,6 +64,8 @@ export class ProfessorFormComponent {
         });
   
       }
+      
+      this.retorno.emit(this.professor);
     }
 
 }
