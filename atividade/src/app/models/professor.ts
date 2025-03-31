@@ -1,3 +1,5 @@
+import { Turma } from "./turma";
+
 export class Professor {
     constructor(
         public id: number = 0,
@@ -5,6 +7,6 @@ export class Professor {
         public cpf: string = '',
         public email: string = '',
         public especialidade: string = '',
-        public turmas: number[] = []
+        public turmas: Turma[] = []
     ) {}
 }

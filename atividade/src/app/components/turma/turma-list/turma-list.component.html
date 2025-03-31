@@ -28,12 +28,22 @@
                                 <td>{{turma.ano}}</td>
                                 <td>{{turma.professores}}</td>
                                 <th class="alinharDireita">
-                                    <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/turma/update/{{turma.id}}">
-                                        Editar
-                                    </button>
-                                    <button (click)="delete(turma)" type="button" class="btn btn-outline-danger btn-rounded" mdbRipple rippleColor="dark">
-                                        Deletar
-                                    </button>
+                                    <div>
+                                        @if(botoes){
+                                            <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" (click)="select(turma)">
+                                                Selecionar
+                                            </button>
+                                        }
+                                        @else {
+                                            <button routerLinkActive="router-link-active"  type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark" routerLink="/admin/turma/update/{{turma.id}}">
+                                                Editar
+                                            </button>
+                                            
+                                            <button (click)="delete(turma)" type="button" class="btn btn-outline-danger btn-rounded" mdbRipple rippleColor="dark">
+                                                Deletar
+                                            </button>
+                                        }
+                                    </div>
                                 </th>
                                 
                             </tr>

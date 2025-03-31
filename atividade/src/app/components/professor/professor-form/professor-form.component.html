@@ -30,9 +30,16 @@
                 </mdb-form-control>
                
                 <br>
-                <button (click)="save()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
-                    Salvar
-                </button>
+                <div>
+                    <button (click)="buscarTurma()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
+                        Buscar Turma
+                    </button>
+                    <br>
+                    <br>
+                    <button (click)="save()" type="button" class="btn btn-outline-success btn-rounded" mdbRipple rippleColor="dark">
+                        Salvar
+                    </button>
+                </div>
                 
             </div>
         </div>
@@ -40,4 +47,18 @@
     </div>
 
     </div>
-</div>    
+</div>  
+
+<ng-template #modalTurmas>
+
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Novo carro</h5>
+    </div>
+    <div class="modal-body">
+
+        <app-turma-list [botoes]="true" (retornoTurma)="retornoTurma($event)"></app-turma-list>
+
+    </div>
+
+</ng-template>
+

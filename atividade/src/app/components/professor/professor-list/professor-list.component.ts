@@ -3,11 +3,14 @@ import { Professor } from '../../../models/professor';
 import { RouterLink } from '@angular/router';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ProfessorFormComponent } from '../professor-form/professor-form.component';
+import { ProfessorService } from '../../../services/professor.service';
+import Swal from 'sweetalert2';
+import { TurmaListComponent } from "../../turma/turma-list/turma-list.component";
 
 @Component({
   selector: 'app-professor-list',
   standalone: true,
-  imports: [RouterLink, ProfessorFormComponent],
+  imports: [RouterLink, ProfessorFormComponent, TurmaListComponent],
   templateUrl: './professor-list.component.html',
   styleUrl: './professor-list.component.scss',
   providers: [MdbModalService]
@@ -15,6 +18,8 @@ import { ProfessorFormComponent } from '../professor-form/professor-form.compone
 export class ProfessorListComponent {
   lista: Professor[]= [];
   professorEdit:Professor = new Professor();
+
+  professorService = inject(ProfessorService);
 
   modalService = inject(MdbModalService);
   @ViewChild('modalProfessorNew') modalProfessorNew! : TemplateRef<any>;
@@ -25,15 +30,39 @@ export class ProfessorListComponent {
   }
 
   findAll(){
-    
-    this.lista.push(new Professor(1,"abc","000.000.000-00","","", []));
-    this.lista.push(new Professor(2,"abc","000.000.000-00","","", []));
-    this.lista.push(new Professor(3,"abc","000.000.000-00","","", []));
+   
+    this.professorService.findAll().subscribe({
+      next: (listaRetornada) => {
+        this.lista = listaRetornada;
+      },
+      error: (erro) => {
+        Swal.fire(erro.error, '', 'error');
+      }
+    });
   }
 
   delete(professor: Professor){
-    let i = this.lista.findIndex(x => {return x.id == professor.id});
-    this.lista.splice(i, 1);
+
+    Swal.fire({
+      title: 'Deseja mesmo deleatr?',
+      showCancelButton: true,
+      confirmButtonText: 'Sim',
+      cancelButtonText: `Cancelar`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.professorService.deleteById(professor.id).subscribe({
+          next: (mensagem) => {
+            Swal.fire(mensagem, '', 'success');
+            this.findAll();
+          },
+          error: (erro) => {
+            Swal.fire(erro.error, '', 'error');
+          }
+        });
+        
+      }
+    });
   }
 
   new(){
